@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+ <jsp:include page="module/header.jsp" />
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ 
   <title>Register - Secure Portal</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
   <style>
     body {
-      background: url('https://plus.unsplash.com/premium_photo-1681426710520-7c56c9f563d2?fm=jpg&q=60&w=3000') no-repeat center center;
+      background: url('https://source.unsplash.com/1600x900/?technology,abstract') no-repeat center center;
       background-size: cover;
       height: 100vh;
+	 margin-top:4%;
+      margin-left:30%;
     }
 
     .login-container {
@@ -17,8 +17,8 @@
       padding: 30px 25px;
       border-radius: 15px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-      max-width: 400px;
-      width: 100%;
+       max-width: 700px; 
+      width: 70vw !important;
       border: 1px solid #ccc;
       backdrop-filter: blur(6px);
     }
@@ -92,9 +92,10 @@
     }
   </style>
 </head>
+
 <body class="d-flex flex-column justify-content-center align-items-center vh-100">
   <div class="login-container">
-    <h3>Register</h3>
+    <h3>Update manegers</h3>
 
     <% 
       String errorMsg = (String) request.getAttribute("errormsg");
@@ -103,34 +104,55 @@
       <p class="error-message"><%= errorMsg %></p>
     <% } %>
 
-    <form action="signupPage" method="POST">
-      <div class="mb-3">
-        <input type="text" class="form-control underline-input" id="fullName" name="fullName" placeholder="Full Name" required />
-      </div>
-
-      <div class="mb-3">
-        <input type="email" class="form-control underline-input" id="email" name="email" placeholder="Email Address" required />
-      </div>
-
-      <div class="mb-3">
-        <input type="tel" class="form-control underline-input" id="phone" name="phone" placeholder="Phone Number" pattern="[0-9]{10}" required />
-      </div>
-
-      <div class="mb-3">
-        <input type="password" class="form-control underline-input" id="password" name="password" placeholder="Password" required />
-      </div>
-
-      <div class="mb-3">
-        <select class="form-control underline-input" name="role" required>
-          <option value="">Select Role</option>
-          <option value="admin">Admin</option>
-          <option value="manager">Manager</option>
-          <option value="staff">Staff</option>
-        </select>
-      </div>
-
-      <button type="submit" class="btn-login">Register</button>
-    </form>
+   <form action="update_maneger" method="POST">
+   <input type="hidden" name="id" value="${updateData.id}" />
+   
+  <!-- Row 1: Full Name + Email -->
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <input type="text" class="form-control underline-input" name="fullName" placeholder="Full Name" value="${updateData.fullName}"  required />
+    </div>
+    <div class="col-md-6">
+      <input type="email" class="form-control underline-input" name="email" placeholder="Email Address" value="${updateData.email}"  required />
+    </div>
   </div>
-</body>
-</html>
+
+  <!-- Row 2: Phone + Password -->
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <input type="tel" class="form-control underline-input" name="phone" placeholder="Phone Number" value="${updateData.phone}" required />
+    </div>
+    <div class="col-md-6">
+      <input type="password" class="form-control underline-input" name="password" placeholder="Password"value="${updateData.password}" required />
+    </div>
+  </div>
+
+ <div class="row mb-3">
+    <div class="col-md-6">
+    <select class="form-control underline-input" name="role" value="${updateData.role}" required>
+      <option value="" >Select Role</option>
+      <option value="admin" >Admin</option>
+      <option value="manager">Manager</option>
+      <option value="staff">Staff</option>
+    </select>
+  </div>
+    <div class="col-md-6">
+      <input type="address" class="form-control underline-input" name="address" placeholder="Address" value="${updateData.address}" required />
+    </div>
+  </div>
+
+  <!-- Row 3: Role (full width) -->
+
+  <!-- Row 4: Buttons - Submit, Update, Remove -->
+  <div class="row">
+    <div class="col-md-4">
+      <button type="submit" class="btn btn-success w-100" >Submit</button>
+    </div>
+  
+  </div>
+</form>
+
+  </div>
+
+  <jsp:include page="module/footer.jsp" />
+

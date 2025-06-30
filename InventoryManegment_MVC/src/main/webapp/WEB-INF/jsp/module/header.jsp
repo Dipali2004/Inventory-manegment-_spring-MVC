@@ -111,8 +111,15 @@
 					<a class="has-arrow" href="javascript:;">
 						<div class="parent-icon"><i class='bx bx-bookmark-heart'></i>
 						</div>
-						<div class="menu-title">Components</div>
+						<div class="menu-title">User Manegment</div>
 					</a>
+					<ul>
+						<li> <a href="Add_maneger"><i class='bx bx-radio-circle'></i>Add/remove Manegers</a>
+						</li>
+						<li> <a href="ViewManeger"><i class='bx bx-radio-circle'></i>View all users</a>
+						</li>
+				
+					</ul>
 					
 				</li>
 				<li>

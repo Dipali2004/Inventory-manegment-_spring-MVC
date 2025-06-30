@@ -13,11 +13,11 @@
     </parent>
 
     <groupId>com.rt</groupId>
-    <artifactId>College_Votting_System</artifactId>
+   <artifactId>inventory-management</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>College_Votting_System</name>
+	<name>Inventory Management</name>
     <description>Demo project for Spring Boot with JSP</description>
 
     <properties>
@@ -30,6 +30,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        
+        <dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.24</version>
+		</dependency>
 
         <!-- Tomcat Embed Jasper for JSP support -->
         <dependency>

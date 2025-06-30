@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -95,7 +95,7 @@ border-radius: 8px;
 		}
 		%>
 
-		<form action="/h" method="POST">
+		<form action="login" method="POST">
 			<div class="mb-3">
 				<label for="email" class="form-label">Email</label> <input
 					type="email" class="form-control" id="email" name="email"
@@ -104,7 +104,7 @@ border-radius: 8px;
 
 			<div class="mb-3">
 				<label for="pass" class="form-label">Password</label> <input
-					type="password" class="form-control" id="pass" name="pass"
+					type="Password" class="form-control" id="pass" name="Password"
 					placeholder="Enter your password" required>
 			</div>
 

@@ -1,4 +1,4 @@
-package com.rt.InventoryManegment_MVC;
+package com.rt;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
