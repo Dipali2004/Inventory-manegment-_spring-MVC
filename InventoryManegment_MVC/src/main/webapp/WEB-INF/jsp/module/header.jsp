@@ -72,9 +72,9 @@
 						<div class="menu-title">Inventory</div>
 					</a>
 					<ul>
-						<li> <a href="index.html"><i class='bx bx-radio-circle'></i>Add New Item</a>
+						<li> <a href="productsdata"><i class='bx bx-radio-circle'></i>Add New Item</a>
 						</li>
-						<li> <a href="index2.html"><i class='bx bx-radio-circle'></i>View Inventory </a>
+						<li> <a href="getAll"><i class='bx bx-radio-circle'></i>View Inventory </a>
 						</li>
 						<li> <a href="index3.html"><i class='bx bx-radio-circle'></i>Edit/Delete </a>
 						</li>
@@ -82,14 +82,25 @@
 					</ul>
 				
 				</li>
-				
 				<li>
-					<a href="widgets.html">
-						<div class="parent-icon"><i class='bx bx-cookie'></i>
+					<a href="javascript:;" class="has-arrow">
+						<div class="parent-icon"><i class="bx bx-category"></i>
 						</div>
-						<div class="menu-title">Widgets</div>
+						<div class="menu-title">Supplier</div>
 					</a>
+					<ul>
+						<li> <a href="supplier"><i class='bx bx-radio-circle'></i>Add Suppliers</a>
+						</li>
+						<li> <a href="view"><i class='bx bx-radio-circle'></i>View Suppliers</a>
+						</li>
+						<li> <a href="index3.html"><i class='bx bx-radio-circle'></i>Edit/Delete</a>
+						</li>
+						
+					</ul>
+				
 				</li>
+				
+				
 				<li>
 					<a href="javascript:;" class="has-arrow">
 						<div class="parent-icon"><i class='bx bx-cart'></i>
