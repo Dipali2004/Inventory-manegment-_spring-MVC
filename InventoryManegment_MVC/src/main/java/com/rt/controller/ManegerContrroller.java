@@ -47,6 +47,7 @@ public class ManegerContrroller {
 	@GetMapping("/ViewManeger")
 	public String getall(Model model) {
 		List<GetAllManegerDTO> managers = ManegerInterface.getAll();
+	
 		model.addAttribute("managers", managers);
 		return "viewManeger";
 	}
