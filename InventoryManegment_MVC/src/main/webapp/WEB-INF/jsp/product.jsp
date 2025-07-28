@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
     <title>Add New Product</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -66,40 +64,80 @@
 </head>
 <body>
 
-    <div class="form-container">
-        <h2>Add New Product</h2>
+<div class="form-container">
+    <h2>Add New Product</h2>
 
-        <form action="/saveProduct" method="post">
-            
-            <!-- Product ID is auto-generated -->
+    <form action="/saveProduct" id="registerForm" method="post">
+        <label for="productName">Product Name:</label>
+        <input type="text" id="productName" name="productName" required />
 
-            <label for="productName">Product Name:</label>
-            <input type="text" id="productName" name="productName" required />
+        <label for="category">Category:</label>
+        <input type="text" id="category" name="category" required />
 
-            <label for="category">Category:</label>
-            <input type="text" id="category" name="category" required />
+        <label for="supplierID">Supplier:</label>
+        <select id="supplierId" name="supplierId" required>
+            <option value="">-- Select Supplier --</option>
+            <c:forEach var="supplier" items="${suppliers}">
+                <option value="${supplier.supplierId}">${supplier.name}</option>
+            </c:forEach>
+        </select>
 
-            <label for="supplierID">Supplier:</label>
-         <select id="supplierId" name="supplierId" required>
-                <option value="">-- Select Supplier --</option>
-                <!-- JSTL Loop for suppliers -->
-                <c:forEach var="supplier" items="${suppliers}">
-                    <option value="${supplier.supplierId}">${supplier.name}</option>
-                </c:forEach>
-            </select>
+        <label for="quantityInStock">Quantity in Stock:</label>
+        <input type="number" id="quantityInStock" name="quantityInStock" required />
 
-            <label for="quantityInStock">Quantity in Stock:</label>
-            <input type="number" id="quantityInStock" name="quantityInStock" required />
+        <label for="reorderLevel">Reorder Level:</label>
+        <input type="number" id="reorderLevel" name="reorderLevel" required />
 
-            <label for="reorderLevel">Reorder Level:</label>
-            <input type="number" id="reorderLevel" name="reorderLevel" required />
+        <label for="pricePerUnit">Price per Unit:</label>
+        <input type="number" step="0.01" id="pricePerUnit" name="pricePerUnit" required />
 
-            <label for="pricePerUnit">Price per Unit:</label>
-            <input type="number" step="0.01" id="pricePerUnit" name="pricePerUnit" required />
+        <input type="submit" value="Save Product" />
+    </form>
+</div>
 
-            <input type="submit" value="Save Product" />
-        </form>
-    </div>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("registerForm");
+
+    form.addEventListener("submit", function (e) {
+        const productName = form.productName.value.trim();
+        const category = form.category.value.trim();
+        const quantityInStock = form.quantityInStock.value.trim();
+        const reorderLevel = form.reorderLevel.value.trim();
+        const pricePerUnit = form.pricePerUnit.value.trim();
+
+        // Regex for only alphabets and spaces
+        const nameRegex = /^[A-Za-z ]+$/;
+
+        let errorMessages = [];
+
+        if (!nameRegex.test(productName)) {
+            errorMessages.push("Product Name must contain only letters and spaces.");
+        }
+
+        if (!nameRegex.test(category)) {
+            errorMessages.push("Category must contain only letters and spaces.");
+        }
+
+        if (quantityInStock < 0) {
+            errorMessages.push("Quantity in Stock cannot be negative.");
+        }
+
+        if (reorderLevel < 0) {
+            errorMessages.push("Reorder Level cannot be negative.");
+        }
+
+        if (pricePerUnit <= 0) {
+            errorMessages.push("Price per Unit must be greater than 0.");
+        }
+
+        if (errorMessages.length > 0) {
+            e.preventDefault(); // Prevent form submission
+            alert(errorMessages.join("\n")); // Show errors
+        }
+    });
+});
+</script>
 
 </body>
 </html>

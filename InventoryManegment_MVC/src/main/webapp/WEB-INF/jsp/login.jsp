@@ -95,7 +95,7 @@ border-radius: 8px;
 		}
 		%>
 
-		<form action="login" method="POST">
+		<form action="login" method="POST" id="loginForm">
 			<div class="mb-3">
 				<label for="email" class="form-label">Email</label> <input
 					type="email" class="form-control" id="email" name="email"
@@ -123,6 +123,43 @@ border-radius: 8px;
 	</div>
 
 	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> 
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+		
+		
+		
+		<script>
+		  function validateForm(e) {
+		    const email = document.getElementById("email").value.trim();
+		    const pass = document.getElementById("pass").value.trim();
+		    const role = document.getElementById("role").value;
+
+		    let error = "";
+
+		    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		    if (!emailPattern.test(email)) {
+		      error += "Enter a valid email.\n";
+		    }
+
+		    if (pass.length < 6) {
+		      error += "Password must be at least 6 characters.\n";
+		    }
+
+		    if (role === "") {
+		      error += "Please select a role.\n";
+		    }
+
+		    if (error) {
+		      alert(error); 
+		      e.preventDefault(); 
+		    }
+		  }
+
+		 
+		  document.addEventListener("DOMContentLoaded", function () {
+		    document.getElementById("loginForm").addEventListener("submit", validateForm);
+		  });
+		</script>
+
+	
 </body>
 </html>
