@@ -2,7 +2,6 @@ package com.rt.controller;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,30 +45,22 @@ public class ProductController<SupplierRespDTO> {
 
 	@GetMapping("/updatedata")
 	public String update(@RequestParam int id, Model model) {
-	    ProductRespDTO data = productInterface.update(id);
-	    if (data != null) {
-	        model.addAttribute("data", data);
-	        return "productUpdate";
-	    }
-	    return "ViewProduct";
+		ProductRespDTO data = productInterface.update(id);
+		if (data != null) {
+			model.addAttribute("data", data);
+			return "productUpdate";
+		}
+		return "ViewProduct";
 	}
+
 	@PostMapping("/updateProduct")
 	public String updateData(@ModelAttribute ProductDTO productDTO, Model model) {
-	    System.out.println("Updating product: " + productDTO);
+		System.out.println("Updating product: " + productDTO);
 
-	    ProductRespDTO data = productInterface.updateData(productDTO);
+		ProductRespDTO data = productInterface.updateData(productDTO);
 
-		/*
-		 * if (data == null) { model.addAttribute("error",
-		 * "Failed to update product. Product may not exist."); return "productUpdate";
-		 * }
-		 */
-	    model.addAttribute("message", "Product updated successfully!");
-	    return "redirect:/getAll";
+		model.addAttribute("message", "Product updated successfully!");
+		return "redirect:/getAll";
 	}
 
-	
-	
-	
-	
 }

@@ -1,12 +1,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:include page="module/header.jsp" />
 
-<title>Supplier List</title>
+<title>Stock Out List</title>
 
 <style>
+    /* ===== Main Content ===== */
     .main-content {
         padding: 20px;
-        margin-left: 250px; /* Adjust to your sidebar width */
+        margin-left: 250px; /* Sidebar width adjust */
         background-color: #f9f9f9;
         min-height: 100vh;
     }
@@ -14,8 +15,10 @@
     h2 {
         text-align: center;
         margin-bottom: 20px;
+        color: #333;
     }
 
+    /* ===== Scroll Container ===== */
     .scroll-container {
         overflow-x: auto;
         background: white;
@@ -24,6 +27,7 @@
         box-shadow: 0 0 10px rgba(0,0,0,0.05);
     }
 
+    /* ===== Table Styling ===== */
     table {
         width: 100%;
         border-collapse: collapse;
@@ -34,18 +38,22 @@
         border: 1px solid #999;
         padding: 10px;
         text-align: center;
+        font-size: 14px;
     }
 
     th {
         background-color: #f2f2f2;
+        font-weight: bold;
     }
 
+    /* ===== Action Buttons ===== */
     a.button {
         padding: 6px 12px;
         background-color: #4CAF50;
         color: white;
         text-decoration: none;
         border-radius: 5px;
+        font-size: 13px;
     }
 
     a.delete-button {
@@ -56,7 +64,7 @@
         opacity: 0.85;
     }
 
-    /* Optional scrollbar style */
+    /* ===== Scrollbar Customization ===== */
     .scroll-container::-webkit-scrollbar {
         height: 8px;
     }
@@ -68,31 +76,33 @@
 </style>
 
 <div class="main-content">
-    <h2>Supplier List</h2>
+    <h2>Stock Out List</h2>
 
     <div class="scroll-container">
         <table>
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
-                    <th>Contact Info</th>
-                    <th>Address</th>
-                    <!-- <th>Products Count</th> -->
+                    <th>Product Name</th>
+                    <th>Quantity Sold</th>
+                    <th>Sale Date</th>
+                    <th>Customer Name</th>
+                    <th>Created By</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <c:forEach var="supplier" items="${managers}">
+                <c:forEach var="stockOut" items="${stockOutList}">
                     <tr>
-                        <td>${supplier.supplierId}</td>
-                        <td>${supplier.name}</td>
-                        <td>${supplier.contactInfo}</td>
-                        <td>${supplier.address}</td>
-                        <%-- <td><c:out value="${fn:length(supplier.products)}"/></td> --%>
+                        <td>${stockOut.stockOutId}</td>
+                        <td>${stockOut.productName}</td>
+                        <td>${stockOut.quantitySold}</td>
+                        <td>${stockOut.saleDate}</td>
+                        <td>${stockOut.customerName}</td>
+                        <td>${stockOut.createdByName}</td>
                         <td>
-                            <a href="update?id=${supplier.supplierId}" class="button">Update</a>
-                            <a href="/supplier/delete/${supplier.supplierId}" class="button delete-button"
+                            <a href="updateStock?id=${stockOut.stockOutId}" class="button">Update</a>
+                            <a href="/stock/delete/${stockOut.stockOutId}" class="button delete-button"
                                onclick="return confirm('Are you sure to delete?')">Delete</a>
                         </td>
                     </tr>

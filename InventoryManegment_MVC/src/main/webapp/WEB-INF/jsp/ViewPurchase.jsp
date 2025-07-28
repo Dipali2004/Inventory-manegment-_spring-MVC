@@ -1,12 +1,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:include page="module/header.jsp" />
 
-<title>Supplier List</title>
+<title>Purchase List</title>
 
 <style>
     .main-content {
         padding: 20px;
-        margin-left: 250px; /* Adjust to your sidebar width */
+        margin-left: 250px; /* Adjust this if your sidebar width is different */
         background-color: #f9f9f9;
         min-height: 100vh;
     }
@@ -27,7 +27,7 @@
     table {
         width: 100%;
         border-collapse: collapse;
-        min-width: 800px;
+        min-width: 1000px;
     }
 
     th, td {
@@ -56,7 +56,7 @@
         opacity: 0.85;
     }
 
-    /* Optional scrollbar style */
+    /* Scrollbar styling */
     .scroll-container::-webkit-scrollbar {
         height: 8px;
     }
@@ -68,32 +68,36 @@
 </style>
 
 <div class="main-content">
-    <h2>Supplier List</h2>
+    <h2>Purchase List</h2>
 
     <div class="scroll-container">
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Contact Info</th>
-                    <th>Address</th>
-                    <!-- <th>Products Count</th> -->
+                    <th>Purchase ID</th>
+                    <th>Product ID</th>
+                    <th>Product Name</th>
+                    <th>Supplier ID</th>
+                    <th>Supplier Name</th>
+                    <th>Quantity Purchased</th>
+                    <th>Purchase Date</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <c:forEach var="supplier" items="${managers}">
+                <c:forEach var="purchase" items="${purchase}">
                     <tr>
-                        <td>${supplier.supplierId}</td>
-                        <td>${supplier.name}</td>
-                        <td>${supplier.contactInfo}</td>
-                        <td>${supplier.address}</td>
-                        <%-- <td><c:out value="${fn:length(supplier.products)}"/></td> --%>
+                        <td>${purchase.purchaseId}</td>
+                        <td>${purchase.product.productId}</td>
+                        <td>${purchase.product.productName}</td>
+                        <td>${purchase.supplier.supplierId}</td>
+                        <td>${purchase.supplier.name}</td>
+                        <td>${purchase.quantityPurchased}</td>
+                        <td>${purchase.purchaseDate}</td>
                         <td>
-                            <a href="update?id=${supplier.supplierId}" class="button">Update</a>
-                            <a href="/supplier/delete/${supplier.supplierId}" class="button delete-button"
-                               onclick="return confirm('Are you sure to delete?')">Delete</a>
+                            <a href="updatepurchase?id=${purchase.purchaseId}" class="button">Update</a>
+                            <a href="/purchase/delete/${purchase.purchaseId}" class="button delete-button"
+                               onclick="return confirm('Are you sure you want to delete?')">Delete</a>
                         </td>
                     </tr>
                 </c:forEach>

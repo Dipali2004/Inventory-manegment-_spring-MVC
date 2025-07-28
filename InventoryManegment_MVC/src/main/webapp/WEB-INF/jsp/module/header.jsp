@@ -105,17 +105,16 @@
 					<a href="javascript:;" class="has-arrow">
 						<div class="parent-icon"><i class='bx bx-cart'></i>
 						</div>
-						<div class="menu-title">Sales</div>
+						<div class="menu-title">Purchase</div>
 					</a>
 					<ul>
-						<li> <a href="ecommerce-products.html"><i class='bx bx-radio-circle'></i>Products</a>
+						<li> <a href="Purchase"><i class='bx bx-radio-circle'></i>Add Purchase</a>
 						</li>
-						<li> <a href="ecommerce-products-details.html"><i class='bx bx-radio-circle'></i>Product Details</a>
+						<li> <a href="getAllPurchase"><i class='bx bx-radio-circle'></i>View Purchase</a>
 						</li>
 						<li> <a href="ecommerce-add-new-products.html"><i class='bx bx-radio-circle'></i>Add New Products</a>
 						</li>
-						<li> <a href="ecommerce-orders.html"><i class='bx bx-radio-circle'></i>Customer Billing</a>
-						</li>
+						
 					</ul>
 				</li>
 				<li>
@@ -135,12 +134,20 @@
 				</li>
 				<li>
 					<a class="has-arrow" href="javascript:;">
-						<div class="parent-icon"><i class="bx bx-repeat"></i>
+						<div class="parent-icon"><i class='bx bx-bookmark-heart'></i>
 						</div>
-						<div class="menu-title">Content</div>
+						<div class="menu-title">Stock Out</div>
 					</a>
+					<ul>
+						<li> <a href="Add_stocks"><i class='bx bx-radio-circle'></i>Add Stocks</a>
+						</li>
+						<li> <a href="Viewstocks"><i class='bx bx-radio-circle'></i>View Stock_Out </a>
+						</li>
+				
+					</ul>
 					
 				</li>
+
 				<li>
 					<a class="has-arrow" href="javascript:;">
 						<div class="parent-icon"> <i class="bx bx-donate-blood"></i>

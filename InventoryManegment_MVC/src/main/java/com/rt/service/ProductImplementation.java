@@ -2,6 +2,7 @@ package com.rt.service;
 
 import java.util.Arrays;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +14,6 @@ import org.springframework.web.client.RestTemplate;
 
 import com.rt.DTO.ProductDTO;
 import com.rt.DTO.ProductRespDTO;
-import com.rt.DTO.ProductUpdate;
-import com.rt.DTO.SupplierReqDTO;
 import com.rt.DTO.SupplierRespDTO;
 import com.rt.serviceInterface.ProductInterface;
 
