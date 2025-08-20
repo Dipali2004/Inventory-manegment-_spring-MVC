@@ -44,7 +44,7 @@ public class PurchaseController {
 	
 	@GetMapping("/getAllPurchase")
 	public String getAll(Model model) {
-		List<PurchaseRespDto> purchase = purchaseInterface.getAll();
+		List<PurchaseRespDto> purchase = purchaseInterface.getAll(0, 100);
 		model.addAttribute("purchase",purchase);
 		
 		return "ViewPurchase";

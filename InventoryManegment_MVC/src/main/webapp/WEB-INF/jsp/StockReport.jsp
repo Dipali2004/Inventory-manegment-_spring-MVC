@@ -1,12 +1,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:include page="module/header.jsp" />
 
-<title>Stock Out Report</title>
+<title>Product Stock Report</title>
 
 <style>
     .main-content {
         padding: 20px;
-        margin-left: 250px;
+        margin-left: 250px; /* Adjust if sidebar width differs */
         background-color: #f9f9f9;
         min-height: 100vh;
     }
@@ -14,7 +14,6 @@
     h2 {
         text-align: center;
         margin-bottom: 20px;
-        color: #333;
     }
 
     .scroll-container {
@@ -35,14 +34,24 @@
         border: 1px solid #999;
         padding: 10px;
         text-align: center;
-        font-size: 14px;
     }
 
     th {
         background-color: #f2f2f2;
+    }
+
+    /* Color highlight for Low Stock status */
+    .low-stock {
+        color: #d9534f;
         font-weight: bold;
     }
 
+    .ok-stock {
+        color: #5cb85c;
+        font-weight: bold;
+    }
+
+    /* Optional scrollbar styling */
     .scroll-container::-webkit-scrollbar {
         height: 8px;
     }
@@ -54,33 +63,33 @@
 </style>
 
 <div class="main-content">
-    <h2>Stock Out Report</h2>
+    <h2>Product Stock Report</h2>
 
     <div class="scroll-container">
         <table>
             <thead>
                 <tr>
-                    <th>Stock Out ID</th>
                     <th>Product ID</th>
                     <th>Product Name</th>
-                    <th>Quantity Sold</th>
-                    <th>Sale Date</th>
-                    <th>Customer Name</th>
-                    <th>Created By (ID)</th>
-                    <th>Created By (Name)</th>
+                    <th>Category</th>
+                    <th>Quantity In Stock</th>
+                    <th>Reorder Level</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
-                <c:forEach var="stock" items="${stockOutList}">
+                <c:forEach var="report" items="${productReportList}">
                     <tr>
-                        <td>${stock.stockOutId}</td>
-                        <td>${stock.productId}</td>
-                        <td>${stock.productName}</td>
-                        <td>${stock.quantitySold}</td>
-                        <td>${stock.saleDate}</td>
-                        <td>${stock.customerName}</td>
-                        <td>${stock.createdBy}</td>
-                        <td>${stock.createdByName}</td>
+                        <td>${report.productId}</td>
+                        <td>${report.productName}</td>
+                        <td>${report.category}</td>
+                        <td>${report.quantityInStock}</td>
+                        <td>${report.reorderLevel}</td>
+                        <td>
+                            <span class="${report.status == 'Low Stock' ? 'low-stock' : 'ok-stock'}">
+                                ${report.status}
+                            </span>
+                        </td>
                     </tr>
                 </c:forEach>
             </tbody>

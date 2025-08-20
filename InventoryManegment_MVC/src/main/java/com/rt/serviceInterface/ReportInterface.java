@@ -1,24 +1,28 @@
 package com.rt.serviceInterface;
 
+import java.time.LocalDate;
 import java.util.List;
 
+import com.rt.DTO.ProductReoprtDTO;
 import com.rt.DTO.ProductRespDTO;
 import com.rt.DTO.PurchaseDTO;
 import com.rt.DTO.PurchaseRespDto;
+import com.rt.DTO.StockOutRepDTO;
 import com.rt.DTO.SupplierRespDTO;
 
-public interface PurchaseInterface {
+public interface ReportInterface {
 
-	PurchaseRespDto add(PurchaseDTO purchaseDTO);
+	List<ProductReoprtDTO> stockReport();
+
+	List<ProductReoprtDTO> LowStock();
 
 	List<SupplierRespDTO> supplierPurchase();
 
 	List<ProductRespDTO> ProductPurchase();
 
-	List<PurchaseRespDto> getAll(int i, int j);
+	List<PurchaseRespDto> getAll();
 
-	PurchaseRespDto getData(int id);
 
-	PurchaseRespDto update(PurchaseDTO purchaseDTO);
+	List<StockOutRepDTO> saleReport();
 
 }

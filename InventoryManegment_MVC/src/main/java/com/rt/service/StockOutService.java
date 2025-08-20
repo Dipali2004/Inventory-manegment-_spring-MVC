@@ -25,7 +25,7 @@ public class StockOutService implements StockOutInterface {
 	
 	@Override
 	public StockOutRepDTO add(StockOutDTO stockOutDTO) {
-		String url = "http://localhost:8000/stock/add";
+		String url = "http://localhost:8085/stock/add";
 
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
@@ -42,7 +42,7 @@ public class StockOutService implements StockOutInterface {
 
 	@Override
 	public List<ProductRespDTO> stock() {
-		String url = "http://localhost:8000/stock/productPurchase";
+		String url = "http://localhost:8085/stock/productPurchase";
 
 		ProductRespDTO[] response = restTemplate.getForObject(url, ProductRespDTO[].class);
 
@@ -56,7 +56,7 @@ public class StockOutService implements StockOutInterface {
 
 	@Override
 	public List<StockOutRepDTO> getAll() {
-		String url = "http://localhost:8000/stock/getallStock";
+		String url = "http://localhost:8085/stock/getallStock";
 
 		StockOutRepDTO[] response = restTemplate.getForObject(url, StockOutRepDTO[].class);
 
@@ -70,7 +70,7 @@ public class StockOutService implements StockOutInterface {
 
 	@Override
 	public StockOutRepDTO GetDataId(int id) {
-		String url = "http://localhost:8000/stock/GetId/" + id;
+		String url = "http://localhost:8085/stock/GetId/" + id;
 		StockOutRepDTO data = restTemplate.getForObject(url, StockOutRepDTO.class);
 		return data;
 		
@@ -79,7 +79,7 @@ public class StockOutService implements StockOutInterface {
 
 	@Override
 	public StockOutRepDTO updateData(StockOutDTO stockOutDTO) {
-		String url = "http://localhost:8000/stock/UpdateStock";
+		String url = "http://localhost:8085/stock/UpdateStock";
 
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);

@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.rt.DTO.ProductDTO;
@@ -37,11 +38,20 @@ public class ProductController<SupplierRespDTO> {
 	}
 
 	@GetMapping("/getAll")
-	public String getall(Model model) {
-		List<ProductRespDTO> product = productInterface.getall();
-		model.addAttribute("product", product);
-		return "ViewProduct";
-	}
+//	public String getall(@RequestParam(defaultValue = "0") int page,
+//            @RequestParam(defaultValue = "3") int size,
+//            Model model) {
+//		List<ProductRespDTO> product = productInterface.getall(page,size);
+//		model.addAttribute("product", product);
+//		return "ViewProduct";
+//	}
+	
+	 public String getAll(Model model) {
+	        // Fetch all products for JSP pagination
+	        List<ProductRespDTO> products = productInterface.getall(0, 100); // max 100 for demo
+	        model.addAttribute("product", products);
+	        return "ViewProduct"; // your JSP file name
+	    }
 
 	@GetMapping("/updatedata")
 	public String update(@RequestParam int id, Model model) {
@@ -62,5 +72,18 @@ public class ProductController<SupplierRespDTO> {
 		model.addAttribute("message", "Product updated successfully!");
 		return "redirect:/getAll";
 	}
+	
+	@GetMapping("/ProductDelete/{id}")
+	public String DeleteProduct(@RequestParam int id ,Model model) {
+		productInterface.DeleteProduct(id);
+		  model.addAttribute("message", "Product with ID " + id + " deleted successfully!");
+		    
+		   
+		   
+		return "DeleteProduct";
+		
+	}
+	
+	
 
 }

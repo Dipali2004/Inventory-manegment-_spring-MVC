@@ -1,99 +1,67 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+<jsp:include page="module/header.jsp" />
+<!--start page wrapper -->
+		<div class="page-wrapper">
+			<div class="page-content">
     <title>Add New Product</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f6f8;
-            margin: 0;
-            padding: 0;
-        }
 
-        .form-container {
-            max-width: 500px;
-            margin: 50px auto;
-            padding: 30px 40px;
-            background-color: #ffffff;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            border-radius: 12px;
-        }
-
-        .form-container h2 {
-            text-align: center;
-            margin-bottom: 25px;
-            color: #333333;
-            font-size: 24px;
-        }
-
-        .form-container label {
-            display: block;
-            margin-bottom: 8px;
-            color: #444444;
-            font-weight: 500;
-        }
-
-        .form-container input[type="text"],
-        .form-container input[type="number"],
-        .form-container select,
-        .form-container input[type="submit"] {
-            width: 100%;
-            padding: 10px 12px;
-            margin-bottom: 20px;
-            border: 1px solid #cccccc;
-            border-radius: 8px;
-            box-sizing: border-box;
-            font-size: 15px;
-        }
-
-        .form-container input[type="submit"] {
-            background-color: #007bff;
-            color: #ffffff;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .form-container input[type="submit"]:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
+<body class="bg-light">
 
-<div class="form-container">
-    <h2>Add New Product</h2>
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card shadow-sm w-50">
+        <div class="card-body">
+            <h2 class="text-center mb-4">Add New Product</h2>
 
-    <form action="/saveProduct" id="registerForm" method="post">
-        <label for="productName">Product Name:</label>
-        <input type="text" id="productName" name="productName" required />
+            <form action="/saveProduct" id="registerForm" method="post">
+                <div class="mb-3">
+                    <label for="productName" class="form-label">Product Name:</label>
+                    <input type="text" id="productName" name="productName" class="form-control" required />
+                </div>
 
-        <label for="category">Category:</label>
-        <input type="text" id="category" name="category" required />
+                <div class="mb-3">
+                    <label for="category" class="form-label">Category:</label>
+                    <input type="text" id="category" name="category" class="form-control" required />
+                </div>
 
-        <label for="supplierID">Supplier:</label>
-        <select id="supplierId" name="supplierId" required>
-            <option value="">-- Select Supplier --</option>
-            <c:forEach var="supplier" items="${suppliers}">
-                <option value="${supplier.supplierId}">${supplier.name}</option>
-            </c:forEach>
-        </select>
+                <div class="mb-3">
+                    <label for="supplierID" class="form-label">Supplier:</label>
+                    <select id="supplierId" name="supplierId" class="form-select" required>
+                        <option value="">-- Select Supplier --</option>
+                        <c:forEach var="supplier" items="${suppliers}">
+                            <option value="${supplier.supplierId}">${supplier.name}</option>
+                        </c:forEach>
+                    </select>
+                </div>
 
-        <label for="quantityInStock">Quantity in Stock:</label>
-        <input type="number" id="quantityInStock" name="quantityInStock" required />
+                <div class="mb-3">
+                    <label for="quantityInStock" class="form-label">Quantity in Stock:</label>
+                    <input type="number" id="quantityInStock" name="quantityInStock" class="form-control" required />
+                </div>
 
-        <label for="reorderLevel">Reorder Level:</label>
-        <input type="number" id="reorderLevel" name="reorderLevel" required />
+                <div class="mb-3">
+                    <label for="reorderLevel" class="form-label">Reorder Level:</label>
+                    <input type="number" id="reorderLevel" name="reorderLevel" class="form-control" required />
+                </div>
 
-        <label for="pricePerUnit">Price per Unit:</label>
-        <input type="number" step="0.01" id="pricePerUnit" name="pricePerUnit" required />
+                <div class="mb-3">
+                    <label for="pricePerUnit" class="form-label">Price per Unit:</label>
+                    <input type="number" step="0.01" id="pricePerUnit" name="pricePerUnit" class="form-control" required />
+                </div>
 
-        <input type="submit" value="Save Product" />
-    </form>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Save Product</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
@@ -139,5 +107,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
-</body>
-</html>
+</div>
+</div>
+
+<jsp:include page="module/footer.jsp" />
+

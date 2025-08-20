@@ -19,4 +19,8 @@ public interface ProductInterface {
 
 	ProductRespDTO updateData(ProductDTO productDTO);
 
+	List<ProductRespDTO> getall(int page, int size);
+
+	void DeleteProduct(int id);
+
 }

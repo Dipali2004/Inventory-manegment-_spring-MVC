@@ -25,7 +25,7 @@ public class SignUpService implements  SignUpInterface {
 //		System.out.println(signUpDTO.getPassword());
 //
 //		System.out.println(signUpDTO.getRole());
-		 String url = "http://localhost:8000/main/SignUp"; 
+		 String url = "http://localhost:8085/main/SignUp"; 
 		  
 		  HttpHeaders headers = new HttpHeaders();
          headers.setContentType(MediaType.APPLICATION_JSON);

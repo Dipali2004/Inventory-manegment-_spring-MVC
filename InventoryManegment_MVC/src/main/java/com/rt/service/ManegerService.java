@@ -27,7 +27,7 @@ public class ManegerService implements ManegerInterface {
 	@Override
 	public ManegerRepDTO addManeger(ManegerDTO manegerDTO) {
 
-		String url = "http://localhost:8000/api/maneger";
+		String url = "http://localhost:8085/api/maneger";
 
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
@@ -43,7 +43,7 @@ public class ManegerService implements ManegerInterface {
 
 	@Override
 	public List<GetAllManegerDTO> getAll() {
-		String url = "http://localhost:8000/api/getAllData";
+		String url = "http://localhost:8085/api/getAllData";
 
 		GetAllManegerDTO[] response = restTemplate.getForObject(url, GetAllManegerDTO[].class);
 
@@ -56,7 +56,7 @@ public class ManegerService implements ManegerInterface {
 	@Override
 	public UpdateManagerDTO updateManeger(int id) {
 
-		String url = "http://localhost:8000/api/update/" + id;
+		String url = "http://localhost:8085/api/update/" + id;
 		System.out.println(id);
 		UpdateManagerDTO empDTO = restTemplate.getForObject(url, UpdateManagerDTO.class);
 
@@ -66,7 +66,7 @@ public class ManegerService implements ManegerInterface {
 
 	@Override
 	public GetAllManegerDTO update(GetAllManegerDTO getAllManegerDTO) {
-		String url = "http://localhost:8000/api/update";
+		String url = "http://localhost:8085/api/update";
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 

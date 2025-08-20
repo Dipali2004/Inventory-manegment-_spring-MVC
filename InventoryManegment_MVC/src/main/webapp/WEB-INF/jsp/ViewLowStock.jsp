@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:include page="module/header.jsp" />
 
-<title>Stock Out Report</title>
+<title>Product Stock Report</title>
 
 <style>
     .main-content {
@@ -54,33 +54,29 @@
 </style>
 
 <div class="main-content">
-    <h2>Stock Out Report</h2>
+    <h2>Product Stock Report</h2>
 
     <div class="scroll-container">
         <table>
             <thead>
                 <tr>
-                    <th>Stock Out ID</th>
-                    <th>Product ID</th>
+                    <th>ID</th>
                     <th>Product Name</th>
-                    <th>Quantity Sold</th>
-                    <th>Sale Date</th>
-                    <th>Customer Name</th>
-                    <th>Created By (ID)</th>
-                    <th>Created By (Name)</th>
+                    <th>Category</th>
+                    <th>Quantity In Stock</th>
+                    <th>Reorder Level</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
-                <c:forEach var="stock" items="${stockOutList}">
+                <c:forEach var="product" items="${productReportList}">
                     <tr>
-                        <td>${stock.stockOutId}</td>
-                        <td>${stock.productId}</td>
-                        <td>${stock.productName}</td>
-                        <td>${stock.quantitySold}</td>
-                        <td>${stock.saleDate}</td>
-                        <td>${stock.customerName}</td>
-                        <td>${stock.createdBy}</td>
-                        <td>${stock.createdByName}</td>
+                        <td>${product.productId}</td>
+                        <td>${product.productName}</td>
+                        <td>${product.category}</td>
+                        <td>${product.quantityInStock}</td>
+                        <td>${product.reorderLevel}</td>
+                        <td>${product.status}</td>
                     </tr>
                 </c:forEach>
             </tbody>

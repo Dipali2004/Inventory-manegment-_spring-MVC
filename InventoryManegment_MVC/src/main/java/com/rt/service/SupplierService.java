@@ -22,7 +22,7 @@ public class SupplierService implements SupplierInt  {
 
 	@Override
 	public SupplierRespDTO add(SupplierReqDTO supplierReqDTO) {
-		String url = "http://localhost:8000/api1/add";
+		String url = "http://localhost:8085/api1/add";
 
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
@@ -37,7 +37,7 @@ public class SupplierService implements SupplierInt  {
 
 	@Override
 	public List<SupplierRespDTO> getAll() {
-		String url = "http://localhost:8000/api1/get";
+		String url = "http://localhost:8085/api1/get";
 
 		SupplierRespDTO[] response = restTemplate.getForObject(url, SupplierRespDTO[].class);
 
@@ -50,14 +50,14 @@ public class SupplierService implements SupplierInt  {
 
 	@Override
 	public SupplierRespDTO update(int id) {
-		String url = "http://localhost:8000/api1/update/" + id;
+		String url = "http://localhost:8085/api1/update/" + id;
 		SupplierRespDTO data =restTemplate.getForObject(url, SupplierRespDTO.class); 
 		return data;
 	}
 
 	@Override
 	public SupplierReqDTO dataUpdate(SupplierReqDTO supplierReqDTO) {
-		String url = "http://localhost:8000/api1/updateForm";
+		String url = "http://localhost:8085/api1/updateForm";
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 
